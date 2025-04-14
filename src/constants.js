@@ -1,1 +1,1 @@
-export const DB_NAME = 'main'
+export const DB_NAME = 'main_node'
