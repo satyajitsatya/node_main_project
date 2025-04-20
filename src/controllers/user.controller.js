@@ -183,16 +183,17 @@ const resetAccessToken = asyncHandler(async (req , res) =>{
     {
        throw new ApiErrors(402, "invalid token");
     }
- 
-    const user = User.findById(decodedToken._id).select("-password");
- 
+   
+    const user =await User.findById(decodedToken._id).select("-password");
+    
+    
     if(!user)
     {
        throw new ApiErrors(402,"invalid refreshToken");
     }
     if(refreshToken != user?.refreshToken)
     {
-       throw new ApiErrors(402,"invalid refreshToken");
+       throw new ApiErrors(402,"invalid refreshToken in database");
     }
  
     //resetAccessToken
